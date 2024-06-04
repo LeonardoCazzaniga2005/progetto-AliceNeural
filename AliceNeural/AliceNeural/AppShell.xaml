@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="AliceNeural.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AliceNeural"
+    Shell.FlyoutBehavior="Disabled"
+    Title="AliceNeural"
+    xmlns:View="clr-namespace:AliceNeural.View">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate View:HomePage}"
+        Route="MainPage" />
+
+</Shell>

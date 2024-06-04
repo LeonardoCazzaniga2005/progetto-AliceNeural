@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AliceNeural.View.HomePage"
+             Title="HomePage"
+             xmlns:ViewModel="clr-namespace:AliceNeural.ViewModel"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <ViewModel:BaseViewModel/>
+    </ContentPage.BindingContext>
+    <Grid VerticalOptions="Center" Margin="0" RowDefinitions="Auto,Auto">
+        <Frame Margin="50" CornerRadius="50" IsVisible="{Binding MeteoVisible}" BackgroundColor="Black">
+            <Grid RowDefinitions="50,200,50" ColumnDefinitions="*,*,*,*">
+                <Label Text="{Binding Citta}" Grid.ColumnSpan="4" HorizontalOptions="Center" FontAttributes="Bold"
+                       FontSize="40" TextColor="White"/>
+                <Image Source="sole.png" Grid.Row="1" HeightRequest="100" WidthRequest="100" Opacity="{Binding OpSole}"/>
+                <Image Source="nuovole.png" Grid.Row="1" Grid.Column="1" HeightRequest="100" WidthRequest="100" Opacity="{Binding OpNuvole}"/>
+                <Image Source="pioggia.png" Grid.Row="1" Grid.Column="2" HeightRequest="100" WidthRequest="100" Opacity="{Binding OpPioggia}"/>
+                <Image Source="neve.png" Grid.Row="1" Grid.Column="3" HeightRequest="100" WidthRequest="100" Opacity="{Binding OpNeve}"/>
+                <Label Text="{Binding DataPrevisioni}" Grid.ColumnSpan="4" HorizontalOptions="Center" Grid.Row="2" FontAttributes="Bold"
+                       FontSize="40" TextColor="White"/>
+            </Grid>
+        </Frame>
+        <Frame Margin="50" CornerRadius="50" IsVisible="{Binding MapVisible}" BackgroundColor="Black">
+            <Grid RowDefinitions="80,100" ColumnDefinitions="*,*">
+                <Image Source="posizione.png" HorizontalOptions="End"/>
+                <Label Text="{Binding Citta}" HorizontalOptions="Start" FontAttributes="Bold"
+               FontSize="40" TextColor="White" Grid.Column="1"/>
+                <Label Text="{Binding Tipo}" TextColor="White" FontSize="40" FontAttributes="Bold"
+                       Grid.Row="1" HorizontalOptions="End"/>
+                <Label Text="{Binding NomePosto}" TextColor="White" FontSize="40" FontAttributes="Bold"
+                    Grid.Column="1" Grid.Row="1"/>
+            </Grid>
+        </Frame>
+        <Frame Margin="50" CornerRadius="50" IsVisible="{Binding DistVisible}" BackgroundColor="Black">
+            <Grid RowDefinitions="100,100" ColumnDefinitions="*,*,*,*,*">
+                <Label Text="{Binding CittaPartenza}" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"
+                       FontAttributes="Bold" FontSize="30"/>
+                <Image Source="a.png" Grid.Column="1"/>
+                <Image Source="freccianera.png" Grid.Column="2"/>
+                <Image Source="b.png" Grid.Column="3"/>
+                <Label Text="{Binding CittaArrivo}" TextColor="White" Grid.Column="4" HorizontalOptions="Center" VerticalOptions="Center"
+                       FontAttributes="Bold" FontSize="30"/>
+                <Label Text="{Binding Distanza}" Grid.Row="1" HorizontalOptions="Center" Grid.ColumnSpan="2" VerticalOptions="Center"
+                        FontAttributes="Bold" FontSize="25"/>
+                <Label Text="{Binding Durata}" Grid.Row="1" HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Column="3"
+                       VerticalOptions="Center" FontAttributes="Bold" FontSize="25"/>
+            </Grid>
+        </Frame>
+        <Button 
+            Margin="50,0,0,0"
+            Grid.Row="1"
+            ImageSource="microfono.png"
+            Command="{Binding StartListeningCommand}"
+            VerticalOptions="End"
+            HorizontalOptions="Center" 
+            Padding="20"
+            CornerRadius="100"
+            BackgroundColor="{Binding ColoreBottone}"
+            BorderColor="Black"
+            BorderWidth="2"/>
+    </Grid>
+</ContentPage>
